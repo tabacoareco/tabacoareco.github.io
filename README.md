@@ -1,9 +1,22 @@
-
-  <!-- Íconos FontAwesome -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabacos Areco</title>
+  
+  <!-- Íconos de FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Configuración del fondo full screen */
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Fondo full screen */
     body {
       background-image: url('fondo.jpg'); 
       background-size: cover;
@@ -11,14 +24,13 @@
       background-position: center;
       background-repeat: no-repeat;
       background-color: #1a1a1a;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow: hidden; /* Evita barras de desplazamiento */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Contenedor flotante para los botones laterales */
+    /* Contenedor flotante de botones laterales */
     .side-buttons {
       position: fixed;
       top: 50%;
@@ -26,29 +38,28 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 30px;
-      box-sizing: border-box;
-      pointer-events: none; /* Permite hacer clic en la imagen si no se toca un botón */
+      padding: 0 40px;
       transform: translateY(-50%);
       z-index: 10;
+      pointer-events: none;
     }
 
-    /* Estilo general de los botones */
+    /* Botones */
     .btn-side {
       pointer-events: auto;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 26px;
+      padding: 16px 28px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.05rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
       transition: all 0.3s ease;
     }
 
-    /* Botón Izquierdo - PDF Lista de precios */
+    /* Izquierda: PDF */
     .btn-pdf {
       background-color: rgba(194, 141, 75, 0.95);
       color: #ffffff;
@@ -60,7 +71,7 @@
       transform: scale(1.08) translateX(5px);
     }
 
-    /* Botón Derecho - WhatsApp */
+    /* Derecha: WhatsApp */
     .btn-whatsapp {
       background-color: rgba(37, 211, 102, 0.95);
       color: #ffffff;
@@ -72,10 +83,10 @@
       transform: scale(1.08) translateX(-5px);
     }
 
-    /* Adaptación para celulares */
+    /* Vista en Celulares */
     @media (max-width: 700px) {
       body {
-        overflow: auto; /* Permite scroll solo en celulares si se acomodan verticalmente */
+        overflow-y: auto;
       }
 
       .side-buttons {
@@ -85,8 +96,8 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        margin-top: 60vh; /* Desplaza los botones abajo para lucir la ilustración en el cel */
-        padding-bottom: 30px;
+        margin-top: 65vh;
+        padding-bottom: 40px;
       }
 
       .btn-side {
@@ -98,14 +109,13 @@
 </head>
 <body>
 
-  <!-- Botones Ubicados a los Laterales -->
   <div class="side-buttons">
-    <!-- Izquierda: Lista en PDF -->
+    <!-- Botón Lista de Precios -->
     <a href="index.pdf" target="_blank" class="btn-side btn-pdf">
       <i class="fa-solid fa-file-pdf fa-lg"></i> Lista de Precios
     </a>
 
-    <!-- Derecha: WhatsApp -->
+    <!-- Botón WhatsApp -->
     <a href="https://wa.me/5492325404049" target="_blank" class="btn-side btn-whatsapp">
       <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp
     </a>
