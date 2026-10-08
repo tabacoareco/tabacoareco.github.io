@@ -5,7 +5,7 @@
 
 <main>
   <h1>Catálogo de Productos</h1>
-
+index.pdf
   <!-- Categoría 1 -->
   <section>
     <h2>1. Tabaco para Armar</h2>
