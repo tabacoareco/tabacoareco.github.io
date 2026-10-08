@@ -783,7 +783,7 @@ VAPERS DESCARTABLES
 	ELFBAR 40K  Strawberry Watermelon (Frutilla - Sandia)	$ 33.000
 	ELFBAR 40K Peach (Durazno)	$ 33.000
 	ELFBAR 40K Baja Splash (Lima - Citricos)	$ 33.000
-	ELFBAR 40K Sour Strawberry Dragon Fruit (Frutilla Acida. Pitalla)	$ 33.000
+	ELFBAR 40K Sour Strawberry Dragon Fruit (Frutilla Acida. Pitalla)	$ 33.000.
 
 	IGNITE 15K Pineapple Ice  (Anana Fresca)	$ 25.000
 	IGNITE 15K Green Apple Peach Kiwi   (Manzana Verde - Durazno - Kiwi)	$ 25.000
