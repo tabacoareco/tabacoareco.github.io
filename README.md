@@ -145,10 +145,7 @@
 </head>
 <body>
 
-  <!-- Leyenda Superior flotante en letra negra -->
-  <div class="top-slogan-box">
-    <p class="slogan">"Para quienes saben apreciar el verdadero placer del tabaco."</p>
-  </div>
+ 
 
   <!-- Botones Ubicados a los Laterales -->
   <div class="side-buttons">
