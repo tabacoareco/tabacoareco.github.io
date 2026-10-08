@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabacos Areco</title>
   
   <!-- Fuente tradicional de gran legibilidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
   <!-- Íconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -31,34 +32,31 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Caja para la frase superior (Letra negra, grande y destacada) */
+    /* Ubicación de la leyenda en la parte superior */
     .top-slogan-box {
-      margin-top: 25px;
-      background-color: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(6px);
-      border: 2px solid #c28d4b;
-      padding: 18px 30px;
-      border-radius: 14px;
+      margin-top: 30px;
       text-align: center;
-      max-width: 85%;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      max-width: 90%;
+      padding: 0 10px;
     }
 
+    /* Frase en letra negra destacada */
     .slogan {
       color: #000000;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-weight: 800;
-      font-size: 1.4rem;
+      font-weight: 900;
+      font-size: 1.5rem;
       margin: 0;
       line-height: 1.3;
       letter-spacing: 0.5px;
+      text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px -1px 2px rgba(255, 255, 255, 0.6);
     }
 
     /* Contenedor flotante para los botones laterales */
     .side-buttons {
       position: fixed;
-      top: 55%;
+      top: 50%;
       left: 0;
       width: 100%;
       display: flex;
@@ -111,23 +109,21 @@
 
     /* Pie de página discreto */
     .footer {
-      margin-bottom: 20px;
-      background-color: rgba(0, 0, 0, 0.65);
-      padding: 6px 18px;
-      border-radius: 20px;
+      margin-bottom: 15px;
       font-size: 0.85rem;
-      color: #dddddd;
+      color: #000000;
+      font-weight: bold;
+      text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6);
     }
 
     /* Ajuste para celulares */
     @media (max-width: 700px) {
       .slogan {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
       }
 
       .top-slogan-box {
-        padding: 14px 20px;
-        margin-top: 15px;
+        margin-top: 20px;
       }
 
       .side-buttons {
@@ -137,7 +133,7 @@
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        margin: 30px 0;
+        margin: 25px 0;
       }
 
       .btn-side {
@@ -149,7 +145,7 @@
 </head>
 <body>
 
-  <!-- Leyenda Superior en letra negra bien visible -->
+  <!-- Leyenda Superior flotante en letra negra -->
   <div class="top-slogan-box">
     <p class="slogan">"Para quienes saben apreciar el verdadero placer del tabaco."</p>
   </div>
