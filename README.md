@@ -17,28 +17,7 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
 
-    /* Ubicación de la leyenda en la parte superior */
-    .top-slogan-box {
-      margin-top: 30px;
-      text-align: center;
-      max-width: 90%;
-      padding: 0 10px;
-    }
-
-    /* Frase en letra negra destacada */
-    .slogan {
-      color: #000000;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 900;
-      font-size: 1.5rem;
-      margin: 0;
-      line-height: 1.3;
-      letter-spacing: 0.5px;
-      text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px -1px 2px rgba(255, 255, 255, 0.6);
-    }
 
     /* Contenedor flotante para los botones laterales */
     .side-buttons {
@@ -147,10 +126,7 @@
     </a>
   </div>
 
-  <!-- Pie de Página -->
-  <div class="footer">
-    San Antonio de Areco, Argentina
-  </div>
+
 
 </body>
 </html>
