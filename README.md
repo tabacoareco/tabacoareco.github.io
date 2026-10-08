@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TABACOS ARECO</title>
+  <title>Tabacos Areco</title>
   
-  <!-- Fuentes tradicionales -->
+  <!-- Fuente tradicional de gran legibilidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
   <!-- Íconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -32,37 +32,31 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Encabezado superior transparente */
-    .header-box {
-      margin-top: 30px;
-      background-color: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(194, 141, 75, 0.6);
-      padding: 20px 30px;
-      border-radius: 12px;
+    /* Caja para la frase superior (Letra negra, grande y destacada) */
+    .top-slogan-box {
+      margin-top: 25px;
+      background-color: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(6px);
+      border: 2px solid #c28d4b;
+      padding: 18px 30px;
+      border-radius: 14px;
       text-align: center;
-      max-width: 90%;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-    }
-
-    h1 {
-      font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
-      color: #e0a96d;
-      font-size: 2.8rem;
-      margin: 0 0 5px 0;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+      max-width: 85%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     }
 
     .slogan {
-      color: #e0e0e0;
+      color: #000000;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.05rem;
+      font-weight: 800;
+      font-size: 1.4rem;
       margin: 0;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
     }
 
-    /* Contenedor flotante para los laterales */
+    /* Contenedor flotante para los botones laterales */
     .side-buttons {
       position: fixed;
       top: 55%;
@@ -70,32 +64,31 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 25px;
+      padding: 0 30px;
       box-sizing: border-box;
-      pointer-events: none; /* Permite hacer clic en el fondo */
+      pointer-events: none;
       transform: translateY(-50%);
       z-index: 10;
     }
 
-    /* Estilo general de los botones laterales */
+    /* Estilo de los botones */
     .btn-side {
-      pointer-events: auto; /* Activa la interacción del clic */
+      pointer-events: auto;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 24px;
+      padding: 16px 26px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      font-size: 1.05rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       transition: all 0.3s ease;
-      backdrop-filter: blur(2px);
     }
 
-    /* Botón Lateral Izquierdo - PDF */
+    /* Botón Izquierdo - PDF Lista de precios */
     .btn-pdf {
-      background-color: rgba(194, 141, 75, 0.92);
+      background-color: rgba(194, 141, 75, 0.95);
       color: #ffffff;
       border: 1px solid #e0a96d;
     }
@@ -105,9 +98,9 @@
       transform: scale(1.08) translateX(5px);
     }
 
-    /* Botón Lateral Derecho - WhatsApp */
+    /* Botón Derecho - WhatsApp */
     .btn-whatsapp {
-      background-color: rgba(37, 211, 102, 0.92);
+      background-color: rgba(37, 211, 102, 0.95);
       color: #ffffff;
       border: 1px solid #20ba5a;
     }
@@ -117,18 +110,27 @@
       transform: scale(1.08) translateX(-5px);
     }
 
-    /* Pie de página */
+    /* Pie de página discreto */
     .footer {
       margin-bottom: 20px;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 6px 16px;
+      background-color: rgba(0, 0, 0, 0.65);
+      padding: 6px 18px;
       border-radius: 20px;
-      font-size: 0.8rem;
-      color: #cccccc;
+      font-size: 0.85rem;
+      color: #dddddd;
     }
 
-    /* Adaptación para pantallas de celulares pequeños */
-    @media (max-width: 650px) {
+    /* Ajuste para celulares */
+    @media (max-width: 700px) {
+      .slogan {
+        font-size: 1.15rem;
+      }
+
+      .top-slogan-box {
+        padding: 14px 20px;
+        margin-top: 15px;
+      }
+
       .side-buttons {
         position: relative;
         top: 0;
@@ -136,31 +138,26 @@
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        margin: 40px 0;
+        margin: 30px 0;
       }
 
       .btn-side {
-        width: 80%;
+        width: 85%;
         justify-content: center;
-      }
-
-      h1 {
-        font-size: 2.1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado Superior -->
-  <div class="header-box">
-    <h1>TABACOS ARECO</h1>
+  <!-- Leyenda Superior en letra negra bien visible -->
+  <div class="top-slogan-box">
     <p class="slogan">"Para quienes saben apreciar el verdadero placer del tabaco."</p>
   </div>
 
   <!-- Botones Ubicados a los Laterales -->
   <div class="side-buttons">
-    <!-- Izquierda: PDF -->
+    <!-- Izquierda: Lista en PDF -->
     <a href="index.pdf" target="_blank" class="btn-side btn-pdf">
       <i class="fa-solid fa-file-pdf fa-lg"></i> Lista de Precios
     </a>
