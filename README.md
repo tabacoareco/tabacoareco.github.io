@@ -1,6 +1,15 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabacos Areco</title>
+  
+  <!-- Íconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* Configuración del fondo */
+    /* Configuración del fondo full screen */
     body {
       background-image: url('fondo.jpg'); 
       background-size: cover;
@@ -11,13 +20,9 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+      overflow: hidden; /* Evita barras de desplazamiento */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    }
 
     /* Contenedor flotante para los botones laterales */
     .side-buttons {
@@ -29,12 +34,12 @@
       justify-content: space-between;
       padding: 0 30px;
       box-sizing: border-box;
-      pointer-events: none;
+      pointer-events: none; /* Permite hacer clic en la imagen si no se toca un botón */
       transform: translateY(-50%);
       z-index: 10;
     }
 
-    /* Estilo de los botones */
+    /* Estilo general de los botones */
     .btn-side {
       pointer-events: auto;
       display: flex;
@@ -73,23 +78,10 @@
       transform: scale(1.08) translateX(-5px);
     }
 
-    /* Pie de página discreto */
-    .footer {
-      margin-bottom: 15px;
-      font-size: 0.85rem;
-      color: #000000;
-      font-weight: bold;
-      text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6);
-    }
-
-    /* Ajuste para celulares */
+    /* Adaptación para celulares */
     @media (max-width: 700px) {
-      .slogan {
-        font-size: 1.2rem;
-      }
-
-      .top-slogan-box {
-        margin-top: 20px;
+      body {
+        overflow: auto; /* Permite scroll solo en celulares si se acomodan verticalmente */
       }
 
       .side-buttons {
@@ -98,8 +90,9 @@
         transform: none;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-        margin: 25px 0;
+        gap: 20px;
+        margin-top: 60vh; /* Desplaza los botones abajo para lucir la ilustración en el cel */
+        padding-bottom: 30px;
       }
 
       .btn-side {
@@ -110,8 +103,6 @@
   </style>
 </head>
 <body>
-
- 
 
   <!-- Botones Ubicados a los Laterales -->
   <div class="side-buttons">
@@ -125,8 +116,6 @@
       <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp
     </a>
   </div>
-
-
 
 </body>
 </html>
