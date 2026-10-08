@@ -2,7 +2,7 @@ TABACO PARA ARMAR
 LUCKIES
 	Original 30 gr.	$ 7.500
 	Galpao 30 gr.	$ 7.500
-CERRITO
+CERRITO:
  	Original x 45gr	$6.300
  	Yellow (Vainilla) x 45gr	$6.300
  	Brown (Chocolate) x 45gr	$6.300
