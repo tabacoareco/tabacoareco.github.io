@@ -7,7 +7,7 @@
   <style>
     /* Configuración del fondo de pantalla completo */
     body {
-      /* Cambia 'tu-imagen.jpg' por el nombre exacto de tu archivo de imagen subido a GitHub */
+      /* Cambia 'fondo.jpg' por el nombre exacto de tu archivo de imagen subido a GitHub */
       background-image: url('tu-imagen.jpg'); 
       background-size: cover;
       background-attachment: fixed;
