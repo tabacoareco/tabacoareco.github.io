@@ -43,7 +43,7 @@ CHEETAH
 ARGENTO
  	Natural x 40gr	$ 6.900
  	Chocolate x 40gr	$ 6.900
- 	Menta x 40gr #58	$ 6.900
+ 	Menta x 40gr 58	$ 6.900
  	Manzana x 40gr	$ 6.900
  	Uva x 40gr	$ 6.900
  	Vainilla x 40gr	$ 6.900
@@ -105,51 +105,51 @@ APACHE
  	Natural x 40gr	$ 7000
  	Vainilla	$7000
 MACBAREN
- 	Choice Apple #12	$ 7.500
- 	Choice Double Apple #210	$ 7.500
- 	Choice Aromatic #05	$ 7.500
- 	Choice Café #09	$ 7.500
- 	Choice Cherry #03	$ 7.500
- 	Choice Double Cherry #237	$ 7.500
- 	Choice Cool Mint #15	$ 7.500
- 	Choice Double Menthol #251	$ 7.500
- 	Choice Vainilla #02	$ 7.500
- 	Choice Double Vainilla #225	$ 7.500
- 	Choice Exotic #06	$ 7.500
- 	Choice Grape #07	$ 7.500
- 	Choice Guarana #30	$ 7.500
- 	Choice Mango #25	$ 7.500
- 	Choice Marula #20	$ 7.500
- 	Choice Chocolate #16	$ 7.500
- 	Choice Orange Chocolate #31	$ 7.500
- 	Choice Original #01	$ 7.500
- 	Choice Pinneaple #32	$ 7.500
+ 	Choice Apple 12	$ 7.500
+ 	Choice Double Apple 210	$ 7.500
+ 	Choice Aromatic 05	$ 7.500
+ 	Choice Café 09	$ 7.500
+ 	Choice Cherry 03	$ 7.500
+ 	Choice Double Cherry 237	$ 7.500
+ 	Choice Cool Mint 15	$ 7.500
+ 	Choice Double Menthol 251	$ 7.500
+ 	Choice Vainilla 02	$ 7.500
+ 	Choice Double Vainilla 225	$ 7.500
+ 	Choice Exotic 06	$ 7.500
+ 	Choice Grape 07	$ 7.500
+ 	Choice Guarana 30	$ 7.500
+ 	Choice Mango 25	$ 7.500
+ 	Choice Marula 20	$ 7.500
+ 	Choice Chocolate 16	$ 7.500
+ 	Choice Orange Chocolate 31	$ 7.500
+ 	Choice Original 01	$ 7.500
+ 	Choice Pinneaple 32	$ 7.500
  	Pure Tobacco	$ 7.500
  	Original Virginia	$ 7.500
 STANLEY
- 	Natural #01	$ 6.900
- 	Virginia #23	$ 6.900
- 	Vainilla #02	$ 6.900
- 	Double Vainilla #15	$ 6.900
- 	Apple #7	$ 6.900
- 	Café #14	$ 6.900
- 	Cherry #10	$ 6.900
- 	Chocolate #3	$ 6.900
- 	Citrus #12	$ 6.900
- 	Grape #17	$ 6.900
- 	Mango #20	$ 6.900
- 	Mint #04	$ 6.900
- 	Orange #21	$ 6.900
-	Raspberry Pineapple #22	$ 6.900
-	Half Zwaar #18	$ 6.900
-	Zwaar #24	$ 6.900
-	American Blend #05	$ 6.900
-	Classic #13	$ 6.900
-	Chocomint #11	$ 6.900
-	Licorice #19	$ 6.900
-	Blond #09	$ 6.900
-	Extra Blond #16	$ 6.900
-	Amber #06	$ 6.900
+ 	Natural 01	$ 6.900
+ 	Virginia 23	$ 6.900
+ 	Vainilla 02	$ 6.900
+ 	Double Vainilla 15	$ 6.900
+ 	Apple 7	$ 6.900
+ 	Café 14	$ 6.900
+ 	Cherry 10	$ 6.900
+ 	Chocolate 3	$ 6.900
+ 	Citrus 12	$ 6.900
+ 	Grape 17	$ 6.900
+ 	Mango 20	$ 6.900
+ 	Mint 04	$ 6.900
+ 	Orange 21	$ 6.900
+	Raspberry Pineapple 22	$ 6.900
+	Half Zwaar 18	$ 6.900
+	Zwaar 24	$ 6.900
+	American Blend 05	$ 6.900
+	Classic 13	$ 6.900
+	Chocomint 11	$ 6.900
+	Licorice 19	$ 6.900
+	Blond 09	$ 6.900
+	Extra Blond 16	$ 6.900
+	Amber 06	$ 6.900
 PUEBLO
  	Normal	$11.000
  	Suave	$11.000
@@ -687,15 +687,15 @@ ACCESORIOS
  	Filtro Gizeh 8mm	$ 4.000
 PIPAS
 	Vidrio Tornas. Con Pica plast y 5 rejillas #3	$ 9.900
-	Metal con Rep. Rejillas #4	$ 6.000
-	Vidrio Calavera Tornas. #5	$ 6.000
-	Metal / Vidrio #6	$ 5.700
-	Metal con Resortes #7	$ 5.700
-	Metal con Pica plast y Rejillas #8	$ 7.300
-	Silicona #9	$ 7.800
-	Silicona Guitarra #10	$ 10.800
-	Madera 9cm #11	$ 4.500
-	Madera 14cm #12	$ 7.700
+	Metal con Rep. Rejillas 4	$ 6.000
+	Vidrio Calavera Tornas. 5	$ 6.000
+	Metal / Vidrio 6	$ 5.700
+	Metal con Resortes 7	$ 5.700
+	Metal con Pica plast y Rejillas 8	$ 7.300
+	Silicona 9	$ 7.800
+	Silicona Guitarra 10	$ 10.800
+	Madera 9cm 11	$ 4.500
+	Madera 14cm 12	$ 7.700
 	Bong Pyrex Mini 15cm	$ 20.000
 	Bong Acrilico Mediano Colores 25cm 02	$ 21.000
 	Bong Acrilico Grande Transp 40cm	$ 31.000
