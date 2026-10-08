@@ -3,60 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smoke Tobacco - Catálogo</title>
+  <title>Tabacos Areco - Catálogo de Productos</title>
   <style>
-    /* Configuración del fondo de pantalla completo */
+    /* Estilos del Fondo */
     body {
-      /* Cambia 'fondo.jpg' por el nombre exacto de tu archivo de imagen subido a GitHub */
-      background-image: url('tu-imagen.jpg'); 
+      background-image: url('fondo.jpg'); 
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-color: #121212;
       color: #ffffff;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 20px 10px;
     }
 
-    /* Tarjeta semi-transparente para que el texto se lea sobre la imagen */
+    /* Contenedor principal semi-transparente para lectura clara */
     .container {
       max-width: 900px;
       margin: 0 auto;
-      background-color: rgba(0, 0, 0, 0.85); /* Fondo negro con opacidad */
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      background-color: rgba(18, 18, 18, 0.90);
+      padding: 35px 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Títulos */
     h1 {
       text-align: center;
-      color: #f39c12;
-      border-bottom: 2px solid #f39c12;
-      padding-bottom: 10px;
+      color: #c28d4b;
+      font-size: 2.2rem;
+      margin-top: 0;
+      border-bottom: 2px solid #c28d4b;
+      padding-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     h2 {
-      color: #e67e22;
-      margin-top: 25px;
-      border-left: 4px solid #e67e22;
-      padding-left: 10px;
+      color: #e0a96d;
+      margin-top: 30px;
+      font-size: 1.4rem;
+      border-left: 4px solid #c28d4b;
+      padding-left: 12px;
     }
 
+    /* Listas de productos */
     ul {
-      line-height: 1.6;
+      line-height: 1.8;
+      padding-left: 20px;
     }
 
     li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      color: #dddddd;
+    }
+
+    strong {
+      color: #ffffff;
+    }
+
+    /* Botón de Contacto / WhatsApp */
+    .btn-whatsapp {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 10px auto;
+      padding: 14px 28px;
+      background-color: #25d366;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebc57;
+      transform: translateY(-2px);
+    }
+
+    /* Pie de página */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: #aaaaaa;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Catálogo de Productos</h1>
+    <h1>Tabacos Areco - Catálogo</h1>
 
     <h2>1. Tabaco para Armar</h2>
     <ul>
@@ -114,52 +156,4 @@
       <li><strong>King Edward:</strong> Original, Chocolate.</li>
       <li><strong>Sol de Cuba:</strong> Piccolo, Robusto, Cristal.</li>
       <li><strong>Neos:</strong> Mini White, Mini Red, Mini Brown, Mini Capriccio, Mini Reserva, Mini Java, Selection, Exotic Classic, Exotic Red, Exotic Silver Blue, Pacific Classic, Pacific Red.</li>
-      <li><strong>Villiger:</strong> N°1, N°3, N°7, Export, Mini Gold Filter, Mini Red, Mini White Filter, Mini Black, Mini Green Filter, Mini Peach.</li>
-      <li><strong>Gold Seal / J. Cortes:</strong> Mini, Cigarrillos, Corona Honduras, Corona Dominican, Corona Sumatra.</li>
-      <li><strong>Toscano / Toscanello:</strong> Robusto, Master Aged, Garibaldi, Classico, Antico, Toscanello Rosso Caffe, Rosso Caffe Macchiato, Castano Raffinato, Nero Cioccolato.</li>
-      <li><strong>Panter:</strong> Small, Blue, Dessert, Red/Arome, Mignon De Luxe, Mignon De Luxe Sweet, Señoritas.</li>
-      <li><strong>Agio / Meharis:</strong> Tip Red, Tip Filter, Tip Junior Negro, Java, Ecuador, Orient, Brasil.</li>
-      <li><strong>Phillies / Jewels:</strong> Blunt, Blunt Chocolate, Blunt Vainilla, Blunt Honey, Blunt Cognac, Titan, Sweet Bordeaux, Ducados Mini Classic.</li>
-      <li><strong>Café Crème:</strong> Original, Beige, Red, Blue, Brown, Red Filter, Finos Original, Finos Beige.</li>
-      <li><strong>Gabriela Premium:</strong> Original, Vainilla, Chocolate.</li>
-      <li><strong>Príncipe:</strong> Corona (Natural, Blond, Brown, Red, Caribbean), Finos, Miniature.</li>
-      <li><strong>Francisco Miranda:</strong> Línea Azul, Línea Bordeaux, Línea Amarilla, Línea Negra.</li>
-      <li><strong>Nacionales e Importados Varios:</strong> Nicaragua Reposado 96, Macanudo, CAO World Nicaragua, Monteagudo, Clubmaster, Handelsgold, Placeres, Harvest, Mocambo, Candlelight, Casa Turrent, Joya de Nicaragua.</li>
-    </ul>
-
-    <h2>4. Cigarros Cubanos</h2>
-    <ul>
-      <li><strong>Marcas Destacadas:</strong> José L. Piedra, Quintero, Romeo y Julieta, Partagás, Quai d'Orsay, Cohiba, Sancho Panza, H. Upmann, Hoyo de Monterrey, Flor de Cano, Juan López, Bolívar, Rey del Mundo, Trinidad, Rafael González, Fonseca, Ramón Allones, Montecristo, Vegueros, Guantanamera, Capitol, VegaFina.</li>
-      <li><strong>Mecanizados, Club & Short:</strong> Mini, Club y Short de Cohiba, Montecristo, Partagás, Romeo y Julieta y Trinidad.</li>
-    </ul>
-
-    <h2>5. Papeles, Celulosas y Blunts</h2>
-    <ul>
-      <li><strong>Papeles de Liar:</strong> OCB (Premium, X-Pert, Cáñamo, Bamboo, Azul, Virgen, Ultimate, Arroz, Slim), Smoking (Deluxe, Brown, Organic, N°8 Blue, Rojo), Abadie Block, Mantra Saborizados, RAW (Clásico, Orgánico, Negro), Gizeh, Libella, Dr. Piper, Tres Rayos, Stamps, Tonking.</li>
-      <li><strong>Celulosas:</strong> Aledinha, Lion Rolling Circus, Roots, Moon, Tonking, Tres Rayos, Stamps, Saborizadas (Chocolate, Menta, Uva).</li>
-      <li><strong>Blunts y Wraps:</strong> Blunt Wrap (French Vainilla, Chocolate, Wild Honey, Blueberry, Wet Cherry, Berries, Grape, Mango, Frutilla & Kiwi, Cognac, Watermelon, Peach), Lion Rolling Circus Terpenes, King Blunt, Tres Rayos Hemp Wrap.</li>
-      <li><strong>Conos:</strong> Moon, Lion Cone, Tres Rayos, Scuadafun.</li>
-    </ul>
-
-    <h2>6. Filtros, Tubos y Accesorios</h2>
-    <ul>
-      <li><strong>Filtros de Acetato:</strong> OCB (Regular, Slim, Extra Slim, Eco, Long Slim, Virgen, Menthol), Libella, Gizeh, Smoking.</li>
-      <li><strong>Filtros de Cartón / Tips:</strong> OCB, Smoking, Lion Rolling Circus, Moon, Tonking, Tres Rayos.</li>
-      <li><strong>Tubos:</strong> OCB (Premium, Menthol, Eco), Gizeh Extra.</li>
-      <li><strong>Máquinas de Armar:</strong> OCB, Smoking, Look Out, Gizeh, Tonking, Lion Rolling Circus, Stamps, Tres Rayos.</li>
-      <li><strong>Cigarreras y Tabaqueras:</strong> Smoking, Tres Rayos, Gizeh, Palta Bac.</li>
-    </ul>
-
-    <h2>7. Encendedores, Pipas, Bongs y Vapers</h2>
-    <ul>
-      <li><strong>Encendedores:</strong> Magiclick Catalítico, Candela, BIC, Clipper, Cricket, Zengaz Turbo, Tres Rayos, Bencina y Piedras Zippo, Gas Claer.</li>
-      <li><strong>Pipas y Bongs:</strong> Pipas de Raíz Italiana, Escobillas, Pipas de vidrio/metal/silicona/madera, Bongs de Pyrex/Acrílico, Rejillas, Tuqueras.</li>
-      <li><strong>Narguiles:</strong> Pipas de agua medianas/grandes, carbones, mangueras y tabaco Mazaya.</li>
-      <li><strong>Picadores / Grinders:</strong> Plásticos, Biodegradables y Metálicos temáticos.</li>
-      <li><strong>Vapers Descartables:</strong> Elfbar, Ignite, Orion Bar, Beast.</li>
-      <li><strong>Accesorios Varios:</strong> Boquillas, Corta Cigarros, Cartas de Casino.</li>
-    </ul>
-  </div>
-
-</body>
-</html>
+      <li><strong>Villiger:</strong> N°1, N
