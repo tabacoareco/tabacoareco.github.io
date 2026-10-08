@@ -259,7 +259,7 @@ CAFÉ CREME
  	Red Filter x 10	$ 1.600
 	Original Finos x 10	$ 1.000
 	Beige Finos x 10	$ 1.000
-GABRIELA PREMIUM
+GABRIELA PREMIUM:
  	Original x 10	$950
  	Original x 50	$950
 	Vainilla x 10	$950
