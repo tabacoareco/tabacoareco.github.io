@@ -22,7 +22,6 @@
       padding-bottom: 120px;
     }
 
-    /* Espacio inicial para lucir el logo de fondo */
     .hero-space {
       height: 60vh;
       display: flex;
@@ -34,7 +33,7 @@
     }
 
     .scroll-hint {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(5px);
       padding: 10px 24px;
       border-radius: 50px;
@@ -51,9 +50,8 @@
       60% { transform: translateY(-4px); }
     }
 
-    /* Tienda y Filtros de Categoría */
     .store-container {
-      background: linear-gradient(180deg, rgba(15,15,15,0.7) 0%, rgba(15,15,15,0.95) 15%, #0f0f0f 100%);
+      background: linear-gradient(180deg, rgba(15,15,15,0.75) 0%, rgba(15,15,15,0.95) 15%, #0f0f0f 100%);
       padding-top: 30px;
       min-height: 100vh;
       border-top: 1px solid rgba(224, 169, 109, 0.3);
@@ -63,7 +61,6 @@
     header h1 { font-size: 2.2rem; color: #e0a96d; margin-bottom: 5px; }
     header p { color: #ccc; font-size: 0.95rem; }
 
-    /* Buscador */
     .search-container {
       max-width: 500px;
       margin: 15px auto 10px;
@@ -82,25 +79,24 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
-    /* Botones de Categorías */
     .category-bar {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
       margin: 15px auto 25px;
       padding: 0 20px;
-      max-width: 800px;
+      max-width: 950px;
     }
 
     .cat-btn {
-      background: rgba(30,30,30,0.8);
+      background: rgba(30, 30, 30, 0.85);
       color: #ccc;
       border: 1px solid rgba(224, 169, 109, 0.3);
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 30px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: bold;
       transition: all 0.2s;
     }
@@ -111,7 +107,6 @@
       border-color: #e0a96d;
     }
 
-    /* Grid de Productos */
     .catalog {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -122,11 +117,11 @@
     }
 
     .card {
-      background: rgba(25, 25, 25, 0.9);
+      background: rgba(25, 25, 25, 0.92);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(224, 169, 109, 0.25);
       border-radius: 16px;
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -134,12 +129,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.5);
     }
 
-    .card-icon {
-      font-size: 1.8rem;
-      color: #e0a96d;
-      margin-bottom: 8px;
-    }
-
+    .card-icon { font-size: 1.7rem; color: #e0a96d; margin-bottom: 8px; }
     .card h3 { font-size: 1.05rem; margin-bottom: 6px; color: #fff; }
     .card .price { font-size: 1.2rem; font-weight: bold; color: #c28d4b; margin-bottom: 12px; }
 
@@ -187,7 +177,6 @@
 
     .btn-add:hover { background-color: #20ba5a; transform: scale(1.03); }
 
-    /* Botón Flotante Carrito */
     .cart-float-btn {
       position: fixed;
       bottom: 25px;
@@ -209,7 +198,6 @@
 
     .cart-badge { background: #fff; color: #1a1a1a; border-radius: 50%; padding: 2px 8px; font-size: 0.85rem; font-weight: bold; }
 
-    /* Modal Carrito */
     .cart-modal {
       display: none;
       position: fixed;
@@ -256,354 +244,25 @@
     </header>
 
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar producto, marca o sabor..." onkeyup="filterProducts()">
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar marca, sabor o producto..." onkeyup="filterProducts()">
     </div>
 
-    <!-- Filtros Rápidos de Categoría -->
+    <!-- Botones de Categorías -->
     <div class="category-bar">
       <button class="cat-btn active" onclick="filterCategory('todos', this)">Todos</button>
       <button class="cat-btn" onclick="filterCategory('tabaco', this)">🍃 Tabacos</button>
       <button class="cat-btn" onclick="filterCategory('papel', this)">📜 Papeles</button>
       <button class="cat-btn" onclick="filterCategory('filtro', this)">🚬 Filtros</button>
+      <button class="cat-btn" onclick="filterCategory('cigarro', this)">🍂 Cigarros/Pipa</button>
       <button class="cat-btn" onclick="filterCategory('maquina', this)">⚙️ Armadoras</button>
+      <button class="cat-btn" onclick="filterCategory('fuego', this)">🔥 Encendedores</button>
+      <button class="cat-btn" onclick="filterCategory('vaper', this)">💨 Vapers</button>
+      <button class="cat-btn" onclick="filterCategory('accesorio', this)">🌿 Accesorios</button>
     </div>
 
     <main class="catalog" id="productGrid">
 
-      <!-- ================= MÓDULO 1: TABACOS PARA ARMAR ================= -->
-      <div class="card" data-cat="tabaco" data-name="luckies original 30gr">
-        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-        <div><h3>Luckies Original 30g</h3><p class="price">$7.500</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('luck-orig', -1)">-</button>
-          <span class="card-qty-num" id="qty-luck-orig">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('luck-orig', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Luckies Original 30g', 7500, 'luck-orig')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="tabaco" data-name="cerrito original 45gr">
-        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-        <div><h3>Cerrito Original 45g</h3><p class="price">$6.300</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('cerr-orig', -1)">-</button>
-          <span class="card-qty-num" id="qty-cerr-orig">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('cerr-orig', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Cerrito Original 45g', 6300, 'cerr-orig')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="tabaco" data-name="golden virginia 30gr">
-        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-        <div><h3>Golden Virginia 30g</h3><p class="price">$8.500</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('gold-virg', -1)">-</button>
-          <span class="card-qty-num" id="qty-gold-virg">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('gold-virg', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Golden Virginia 30g', 8500, 'gold-virg')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-
-      <!-- ================= MÓDULO 2: PAPELES ================= -->
-      <div class="card" data-cat="papel" data-name="ocb premium negro 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>OCB Premium (Negro) 1 1/4</h3><p class="price">$900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-prem-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-prem-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-prem-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('OCB Premium Negro 1 1/4', 900, 'ocb-prem-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="ocb x-pert gris 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>OCB X-pert (Gris) 1 1/4</h3><p class="price">$900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-xpert-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-xpert-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-xpert-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('OCB X-pert Gris 1 1/4', 900, 'ocb-xpert-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="ocb cañamo organic 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>OCB Cáñamo Organic 1 1/4</h3><p class="price">$900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-can-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-can-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-can-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('OCB Cáñamo 1 1/4', 900, 'ocb-can-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="ocb virgen 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>OCB Virgen 1 1/4</h3><p class="price">$900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-virg-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-virg-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-virg-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('OCB Virgen 1 1/4', 900, 'ocb-virg-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="smoking deluxe 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>Smoking Deluxe 1 1/4</h3><p class="price">$1.000</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('smok-delux-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-smok-delux-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('smok-delux-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Smoking Deluxe 1 1/4', 1000, 'smok-delux-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="smoking brown 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>Smoking Brown 1 1/4</h3><p class="price">$1.000</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('smok-brown-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-smok-brown-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('smok-brown-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Smoking Brown 1 1/4', 1000, 'smok-brown-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="papel" data-name="raw clasico 1 1/4">
-        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
-        <div><h3>RAW Clásico 1 1/4</h3><p class="price">$1.200</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('raw-clas-114', -1)">-</button>
-          <span class="card-qty-num" id="qty-raw-clas-114">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('raw-clas-114', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('RAW Clásico 1 1/4', 1200, 'raw-clas-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-
-      <!-- ================= MÓDULO 2: FILTROS ================= -->
-      <div class="card" data-cat="filtro" data-name="ocb filtros regular 100">
-        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
-        <div><h3>Filtros OCB Regular x100</h3><p class="price">$1.450</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-reg', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-filt-reg">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-reg', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Regular x100', 1450, 'ocb-filt-reg')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="filtro" data-name="ocb filtros slim 150">
-        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
-        <div><h3>Filtros OCB Slim x150</h3><p class="price">$2.000</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-slim', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-filt-slim">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-slim', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Slim x150', 2000, 'ocb-filt-slim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="filtro" data-name="ocb filtros extra slim 120">
-        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
-        <div><h3>Filtros OCB Extra Slim x120</h3><p class="price">$2.250</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-eslim', -1)">-</button>
-          <span class="card-qty-num" id="qty-ocb-filt-eslim">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-eslim', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Extra Slim x120', 2250, 'ocb-filt-eslim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="filtro" data-name="libella filtros slim 200">
-        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
-        <div><h3>Filtros Libella Slim x200</h3><p class="price">$2.250</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('lib-filt-slim', -1)">-</button>
-          <span class="card-qty-num" id="qty-lib-filt-slim">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('lib-filt-slim', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Filtros Libella Slim x200', 2250, 'lib-filt-slim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-
-      <!-- ================= MÓDULO 2: ARMADORAS ================= -->
-      <div class="card" data-cat="maquina" data-name="maquina ocb plastica 1 1/4">
-        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
-        <div><h3>Armadora OCB Plástica 1 1/4</h3><p class="price">$6.900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-plas', -1)">-</button>
-          <span class="card-qty-num" id="qty-maq-ocb-plas">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-plas', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Armadora OCB Plástica 1 1/4', 6900, 'maq-ocb-plas')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="maquina" data-name="maquina ocb metalica 1 1/4">
-        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
-        <div><h3>Armadora OCB Metálica 1 1/4</h3><p class="price">$7.700</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-met', -1)">-</button>
-          <span class="card-qty-num" id="qty-maq-ocb-met">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-met', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Armadora OCB Metálica 1 1/4', 7700, 'maq-ocb-met')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-      <div class="card" data-cat="maquina" data-name="maquina smoking plastica 78mm">
-        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
-        <div><h3>Armadora Smoking Plástica 78mm</h3><p class="price">$6.900</p></div>
-        <div class="card-qty-selector">
-          <button class="card-qty-btn" onclick="changeCardQty('maq-smok-78', -1)">-</button>
-          <span class="card-qty-num" id="qty-maq-smok-78">1</span>
-          <button class="card-qty-btn" onclick="changeCardQty('maq-smok-78', 1)">+</button>
-        </div>
-        <button class="btn-add" onclick="addSelectedToCart('Armadora Smoking Plástica 78mm', 6900, 'maq-smok-78')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-      </div>
-
-    </main>
-  </div>
-
-  <!-- Botón Flotante Carrito -->
-  <button class="cart-float-btn" onclick="toggleCart()">
-    <i class="fa-solid fa-cart-shopping"></i> Ver Pedido
-    <span class="cart-badge" id="cart-count">0</span>
-  </button>
-
-  <!-- Modal Carrito -->
-  <div class="cart-modal" id="cart-modal">
-    <div class="cart-content">
-      <div class="cart-header">
-        <h2>Tu Pedido</h2>
-        <button class="close-btn" onclick="toggleCart()">&times;</button>
-      </div>
-      <div class="cart-items" id="cart-items">
-        <p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>
-      </div>
-      <div class="cart-total" id="cart-total">Total: $0</div>
-      <button class="btn-send-whatsapp" onclick="sendToWhatsApp()">
-        <i class="fa-brands fa-whatsapp fa-lg"></i> Enviar por WhatsApp
-      </button>
-    </div>
-  </div>
-
-  <script>
-    let cart = [];
-    let currentCategory = 'todos';
-    const phoneNumber = "5492325404049";
-
-    function changeCardQty(id, delta) {
-      const qtyElem = document.getElementById(`qty-${id}`);
-      let currentQty = parseInt(qtyElem.innerText);
-      currentQty += delta;
-      if (currentQty < 1) currentQty = 1;
-      qtyElem.innerText = currentQty;
-    }
-
-    function addSelectedToCart(name, price, id) {
-      const qtyElem = document.getElementById(`qty-${id}`);
-      const quantityToAdd = parseInt(qtyElem.innerText);
-
-      const existing = cart.find(item => item.name === name);
-      if (existing) { 
-        existing.qty += quantityToAdd; 
-      } else { 
-        cart.push({ name, price, qty: quantityToAdd }); 
-      }
-      
-      qtyElem.innerText = 1;
-      updateCartUI();
-    }
-
-    function filterCategory(cat, btnElem) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-      btnElem.classList.add('active');
-      filterProducts();
-    }
-
-    function filterProducts() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
-
-      cards.forEach(card => {
-        const name = card.getAttribute('data-name');
-        const cat = card.getAttribute('data-cat');
-
-        const matchesSearch = name.includes(input);
-        const matchesCategory = (currentCategory === 'todos' || cat === currentCategory);
-
-        if (matchesSearch && matchesCategory) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    function updateQty(name, delta) {
-      const item = cart.find(i => i.name === name);
-      if (item) {
-        item.qty += delta;
-        if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
-      }
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const container = document.getElementById('cart-items');
-      const count = document.getElementById('cart-count');
-      const total = document.getElementById('cart-total');
-      let totalQty = 0, totalPrice = 0;
-
-      if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>';
-      } else {
-        container.innerHTML = '';
-        cart.forEach(item => {
-          totalQty += item.qty;
-          totalPrice += item.price * item.qty;
-          const div = document.createElement('div');
-          div.className = 'cart-item';
-          div.innerHTML = `
-            <div><strong>${item.name}</strong><br><small>$${item.price.toLocaleString()}</small></div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <button class="qty-btn" onclick="updateQty('${item.name}', -1)">-</button>
-              <span>${item.qty}</span>
-              <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
-            </div>
-          `;
-          container.appendChild(div);
-        });
-      }
-      count.innerText = totalQty;
-      total.innerText = `Total: $${totalPrice.toLocaleString()}`;
-    }
-
-    function toggleCart() {
-      const modal = document.getElementById('cart-modal');
-      modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function sendToWhatsApp() {
-      if (cart.length === 0) return alert("El carrito está vacío");
-      let text = "¡Hola! Quisiera hacer el siguiente pedido en Tabacos Areco:\n\n";
-      let total = 0;
-      cart.forEach(item => {
-        const sub = item.price * item.qty;
-        total += sub;
-        text += `• ${item.name} x${item.qty} = $${sub.toLocaleString()}\n`;
-      });
-      text += `\n*Total: $${total.toLocaleString()}*`;
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-  </script>
-</body>
-</html>
-<!-- ================= TABACOS PARA ARMAR (PARTE 1) ================= -->
+      <!-- TABACOS -->
       <div class="card" data-cat="tabaco" data-name="luckies original 30gr"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Luckies Original 30g</h3><p class="price">$7.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t1', -1)">-</button><span class="card-qty-num" id="qty-t1">1</span><button class="card-qty-btn" onclick="changeCardQty('t1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Luckies Original 30g', 7500, 't1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="luckies galpao 30gr"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Luckies Galpao 30g</h3><p class="price">$7.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t2', -1)">-</button><span class="card-qty-num" id="qty-t2">1</span><button class="card-qty-btn" onclick="changeCardQty('t2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Luckies Galpao 30g', 7500, 't2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="cerrito original 45gr"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Cerrito Original 45g</h3><p class="price">$6.300</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t3', -1)">-</button><span class="card-qty-num" id="qty-t3">1</span><button class="card-qty-btn" onclick="changeCardQty('t3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Cerrito Original 45g', 6300, 't3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
@@ -619,7 +278,6 @@
       <div class="card" data-cat="tabaco" data-name="horizon"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Horizon</h3><p class="price">$7.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t13', -1)">-</button><span class="card-qty-num" id="qty-t13">1</span><button class="card-qty-btn" onclick="changeCardQty('t13', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Horizon', 7000, 't13')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="moro golden shag"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Moro Golden Shag</h3><p class="price">$6.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t14', -1)">-</button><span class="card-qty-num" id="qty-t14">1</span><button class="card-qty-btn" onclick="changeCardQty('t14', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Moro Golden Shag', 6000, 't14')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="moro vainilla"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Moro Vainilla</h3><p class="price">$6.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t15', -1)">-</button><span class="card-qty-num" id="qty-t15">1</span><button class="card-qty-btn" onclick="changeCardQty('t15', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Moro Vainilla', 6000, 't15')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-<!-- ================= TABACOS PARA ARMAR (PARTE 2) ================= -->
       <div class="card" data-cat="tabaco" data-name="moro chocolate"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Moro Chocolate</h3><p class="price">$6.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t16', -1)">-</button><span class="card-qty-num" id="qty-t16">1</span><button class="card-qty-btn" onclick="changeCardQty('t16', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Moro Chocolate', 6000, 't16')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="moro cereza"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Moro Cereza</h3><p class="price">$6.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t17', -1)">-</button><span class="card-qty-num" id="qty-t17">1</span><button class="card-qty-btn" onclick="changeCardQty('t17', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Moro Cereza', 6000, 't17')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="sayri natural"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Sayri Natural</h3><p class="price">$5.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t18', -1)">-</button><span class="card-qty-num" id="qty-t18">1</span><button class="card-qty-btn" onclick="changeCardQty('t18', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Sayri Natural', 5500, 't18')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
@@ -635,65 +293,9 @@
       <div class="card" data-cat="tabaco" data-name="pueblo normal"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Pueblo Normal</h3><p class="price">$11.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t28', -1)">-</button><span class="card-qty-num" id="qty-t28">1</span><button class="card-qty-btn" onclick="changeCardQty('t28', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Pueblo Normal', 11000, 't28')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="pueblo blue"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Pueblo Blue</h3><p class="price">$11.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t29', -1)">-</button><span class="card-qty-num" id="qty-t29">1</span><button class="card-qty-btn" onclick="changeCardQty('t29', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Pueblo Blue', 11000, 't29')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="tabaco" data-name="argento"><div class="card-icon"><i class="fa-solid fa-leaf"></i></div><div><h3>Argento</h3><p class="price">$6.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('t30', -1)">-</button><span class="card-qty-num" id="qty-t30">1</span><button class="card-qty-btn" onclick="changeCardQty('t30', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Argento', 6500, 't30')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-<!-- ================= PAPELES Y SEDAS ================= -->
+
+      <!-- PAPELES -->
       <div class="card" data-cat="papel" data-name="ocb premium negro 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Premium (Negro) 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p1', -1)">-</button><span class="card-qty-num" id="qty-p1">1</span><button class="card-qty-btn" onclick="changeCardQty('p1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Premium Negro 1 1/4', 900, 'p1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="papel" data-name="ocb x-pert gris 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB X-pert (Gris) 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p2', -1)">-</button><span class="card-qty-num" id="qty-p2">1</span><button class="card-qty-btn" onclick="changeCardQty('p2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB X-pert Gris 1 1/4', 900, 'p2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
       <div class="card" data-cat="papel" data-name="ocb cañamo organic 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Cáñamo Organic 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p3', -1)">-</button><span class="card-qty-num" id="qty-p3">1</span><button class="card-qty-btn" onclick="changeCardQty('p3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Cáñamo 1 1/4', 900, 'p3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb virgen 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Virgen 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p4', -1)">-</button><span class="card-qty-num" id="qty-p4">1</span><button class="card-qty-btn" onclick="changeCardQty('p4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Virgen 1 1/4', 900, 'p4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb ultimate 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Ultimate 1 1/4</h3><p class="price">$1.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p5', -1)">-</button><span class="card-qty-num" id="qty-p5">1</span><button class="card-qty-btn" onclick="changeCardQty('p5', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Ultimate 1 1/4', 1000, 'p5')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb bamboo 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Bamboo 1 1/4</h3><p class="price">$950</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p6', -1)">-</button><span class="card-qty-num" id="qty-p6">1</span><button class="card-qty-btn" onclick="changeCardQty('p6', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Bamboo 1 1/4', 950, 'p6')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb arroz 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Arroz 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p7', -1)">-</button><span class="card-qty-num" id="qty-p7">1</span><button class="card-qty-btn" onclick="changeCardQty('p7', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Arroz 1 1/4', 900, 'p7')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb premium slim + tips"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Premium Slim + Tips</h3><p class="price">$1.600</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p8', -1)">-</button><span class="card-qty-num" id="qty-p8">1</span><button class="card-qty-btn" onclick="changeCardQty('p8', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Premium Slim + Tips', 1600, 'p8')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="ocb virgen slim + tips"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Virgen Slim + Tips</h3><p class="price">$1.600</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p9', -1)">-</button><span class="card-qty-num" id="qty-p9">1</span><button class="card-qty-btn" onclick="changeCardQty('p9', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Virgen Slim + Tips', 1600, 'p9')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking deluxe 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking Deluxe 1 1/4</h3><p class="price">$1.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p10', -1)">-</button><span class="card-qty-num" id="qty-p10">1</span><button class="card-qty-btn" onclick="changeCardQty('p10', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking Deluxe 1 1/4', 1000, 'p10')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking brown 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking Brown 1 1/4</h3><p class="price">$1.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p11', -1)">-</button><span class="card-qty-num" id="qty-p11">1</span><button class="card-qty-btn" onclick="changeCardQty('p11', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking Brown 1 1/4', 1000, 'p11')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking organic 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking Organic 1 1/4</h3><p class="price">$1.050</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p12', -1)">-</button><span class="card-qty-num" id="qty-p12">1</span><button class="card-qty-btn" onclick="changeCardQty('p12', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking Organic 1 1/4', 1050, 'p12')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking n 8 corto 70mm"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking N° 8 Corto (70mm)</h3><p class="price">$850</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p13', -1)">-</button><span class="card-qty-num" id="qty-p13">1</span><button class="card-qty-btn" onclick="changeCardQty('p13', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking N° 8 Corto', 850, 'p13')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking red 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking Red (Rojo) 1 1/4</h3><p class="price">$950</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p14', -1)">-</button><span class="card-qty-num" id="qty-p14">1</span><button class="card-qty-btn" onclick="changeCardQty('p14', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking Red 1 1/4', 950, 'p14')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="smoking master 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Smoking Master 1 1/4</h3><p class="price">$1.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p15', -1)">-</button><span class="card-qty-num" id="qty-p15">1</span><button class="card-qty-btn" onclick="changeCardQty('p15', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Smoking Master 1 1/4', 1000, 'p15')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="raw clasico 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>RAW Clásico 1 1/4</h3><p class="price">$1.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p16', -1)">-</button><span class="card-qty-num" id="qty-p16">1</span><button class="card-qty-btn" onclick="changeCardQty('p16', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('RAW Clásico 1 1/4', 1200, 'p16')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="raw organico 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>RAW Orgánico 1 1/4</h3><p class="price">$1.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p17', -1)">-</button><span class="card-qty-num" id="qty-p17">1</span><button class="card-qty-btn" onclick="changeCardQty('p17', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('RAW Orgánico 1 1/4', 1200, 'p17')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="raw black 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>RAW Black 1 1/4</h3><p class="price">$1.350</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p18', -1)">-</button><span class="card-qty-num" id="qty-p18">1</span><button class="card-qty-btn" onclick="changeCardQty('p18', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('RAW Black 1 1/4', 1350, 'p18')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="abadie 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Abadie 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p19', -1)">-</button><span class="card-qty-num" id="qty-p19">1</span><button class="card-qty-btn" onclick="changeCardQty('p19', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Abadie 1 1/4', 900, 'p19')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="mantra frutilla 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Mantra Frutilla 1 1/4</h3><p class="price">$1.100</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p20', -1)">-</button><span class="card-qty-num" id="qty-p20">1</span><button class="card-qty-btn" onclick="changeCardQty('p20', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Mantra Frutilla 1 1/4', 1100, 'p20')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="mantra chocolate 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Mantra Chocolate 1 1/4</h3><p class="price">$1.100</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p21', -1)">-</button><span class="card-qty-num" id="qty-p21">1</span><button class="card-qty-btn" onclick="changeCardQty('p21', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Mantra Chocolate 1 1/4', 1100, 'p21')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="papel" data-name="mantra uva 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>Mantra Uva 1 1/4</h3><p class="price">$1.100</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p22', -1)">-</button><span class="card-qty-num" id="qty-p22">1</span><button class="card-qty-btn" onclick="changeCardQty('p22', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Mantra Uva 1 1/4', 1100, 'p22')"><i class="fa-solid fa-cart-
-<!-- ================= FILTROS Y TIPS ================= -->
-      <div class="card" data-cat="filtro" data-name="ocb filtros regular 100 8mm"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Regular x100</h3><p class="price">$1.450</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f1', -1)">-</button><span class="card-qty-num" id="qty-f1">1</span><button class="card-qty-btn" onclick="changeCardQty('f1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Regular x100', 1450, 'f1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="ocb filtros slim 150 6mm"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Slim x150</h3><p class="price">$2.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f2', -1)">-</button><span class="card-qty-num" id="qty-f2">1</span><button class="card-qty-btn" onclick="changeCardQty('f2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Slim x150', 2000, 'f2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="ocb filtros extra slim 120 5.7mm"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Extra Slim x120</h3><p class="price">$2.250</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f3', -1)">-</button><span class="card-qty-num" id="qty-f3">1</span><button class="card-qty-btn" onclick="changeCardQty('f3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Extra Slim x120', 2250, 'f3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="ocb filtros eco unbleached virgen 150"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Eco (Virgen) x150</h3><p class="price">$2.100</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f4', -1)">-</button><span class="card-qty-num" id="qty-f4">1</span><button class="card-qty-btn" onclick="changeCardQty('f4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Eco x150', 2100, 'f4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="ocb filtros menthol mentolados 120"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Menthol x120</h3><p class="price">$2.300</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f5', -1)">-</button><span class="card-qty-num" id="qty-f5">1</span><button class="card-qty-btn" onclick="changeCardQty('f5', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Menthol x120', 2300, 'f5')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="ocb filtros long slim 100 largos"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros OCB Long Slim x100</h3><p class="price">$2.100</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f6', -1)">-</button><span class="card-qty-num" id="qty-f6">1</span><button class="card-qty-btn" onclick="changeCardQty('f6', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros OCB Long Slim x100', 2100, 'f6')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="libella filtros slim 200"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros Libella Slim x200</h3><p class="price">$2.250</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f7', -1)">-</button><span class="card-qty-num" id="qty-f7">1</span><button class="card-qty-btn" onclick="changeCardQty('f7', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros Libella Slim x200', 2250, 'f7')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="filtro" data-name="gizeh filtros slim 120 charcoal carbon activado"><div class="card-icon"><i class="fa-solid fa-filter"></i></div><div><h3>Filtros Gizeh Carbón x120</h3><p class="price">$2.400</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('f8', -1)">-</button><span class="card-qty-num" id="qty-f8">1</span><button class="card-qty-btn" onclick="changeCardQty('f8', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Filtros Gizeh Carbón x120', 2400, 'f8')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-<!-- ================= ARMADORAS / MÁQUINAS ================= -->
-      <div class="card" data-cat="maquina" data-name="maquina ocb plastica 1 1/4"><div class="card-icon"><i class="fa-solid fa-gear"></i></div><div><h3>Armadora OCB Plástica 1 1/4</h3><p class="price">$6.900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('m1', -1)">-</button><span class="card-qty-num" id="qty-m1">1</span><button class="card-qty-btn" onclick="changeCardQty('m1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Armadora OCB Plástica 1 1/4', 6900, 'm1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="maquina" data-name="maquina ocb metalica 1 1/4"><div class="card-icon"><i class="fa-solid fa-gear"></i></div><div><h3>Armadora OCB Metálica 1 1/4</h3><p class="price">$7.700</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('m2', -1)">-</button><span class="card-qty-num" id="qty-m2">1</span><button class="card-qty-btn" onclick="changeCardQty('m2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Armadora OCB Metálica 1 1/4', 7700, 'm2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="maquina" data-name="maquina ocb rolling box automatica lata"><div class="card-icon"><i class="fa-solid fa-gear"></i></div><div><h3>Armadora Automática OCB (Lata)</h3><p class="price">$14.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('m3', -1)">-</button><span class="card-qty-num" id="qty-m3">1</span><button class="card-qty-btn" onclick="changeCardQty('m3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Armadora Automática OCB', 14500, 'm3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="maquina" data-name="maquina smoking plastica 78mm"><div class="card-icon"><i class="fa-solid fa-gear"></i></div><div><h3>Armadora Smoking Plástica 78mm</h3><p class="price">$6.900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('m4', -1)">-</button><span class="card-qty-num" id="qty-m4">1</span><button class="card-qty-btn" onclick="changeCardQty('m4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Armadora Smoking Plástica 78mm', 6900, 'm4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="maquina" data-name="maquina raw roller metalica 79mm"><div class="card-icon"><i class="fa-solid fa-gear"></i></div><div><h3>Armadora RAW Roller Metálica</h3><p class="price">$8.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('m5', -1)">-</button><span class="card-qty-num" id="qty-m5">1</span><button class="card-qty-btn" onclick="changeCardQty('m5', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Armadora RAW Roller', 8200, 'm5')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-<!-- ================= CIGARROS Y HABANOS ================= -->
-      <div class="card" data-cat="cigarro" data-name="cafe creme original x10 cigarritos"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Café Creme Original x10</h3><p class="price">$5.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c1', -1)">-</button><span class="card-qty-num" id="qty-c1">1</span><button class="card-qty-btn" onclick="changeCardQty('c1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Café Creme Original x10', 5200, 'c1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="cafe creme aromatique x10 vainilla"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Café Creme Aromatique x10</h3><p class="price">$5.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c2', -1)">-</button><span class="card-qty-num" id="qty-c2">1</span><button class="card-qty-btn" onclick="changeCardQty('c2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Café Creme Aromatique x10', 5200, 'c2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="cafe creme blue x10 suave"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Café Creme Blue x10</h3><p class="price">$5.200</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c3', -1)">-</button><span class="card-qty-num" id="qty-c3">1</span><button class="card-qty-btn" onclick="changeCardQty('c3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Café Creme Blue x10', 5200, 'c3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="neos mini chocolate x10"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Neos Mini Chocolate x10</h3><p class="price">$4.800</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c4', -1)">-</button><span class="card-qty-num" id="qty-c4">1</span><button class="card-qty-btn" onclick="changeCardQty('c4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Neos Mini Chocolate x10', 4800, 'c4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="neos mini cappuccino x10"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Neos Mini Cappuccino x10</h3><p class="price">$4.800</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c5', -1)">-</button><span class="card-qty-num" id="qty-c5">1</span><button class="card-qty-btn" onclick="changeCardQty('c5', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Neos Mini Cappuccino x10', 4800, 'c5')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="toscano classico x5 habano italiano"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Toscano Clásico x5</h3><p class="price">$12.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c6', -1)">-</button><span class="card-qty-num" id="qty-c6">1</span><button class="card-qty-btn" onclick="changeCardQty('c6', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Toscano Clásico x5', 12500, 'c6')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="toscanello aroma moka x5"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Toscanello Aroma Moka x5</h3><p class="price">$11.800</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c7', -1)">-</button><span class="card-qty-num" id="qty-c7">1</span><button class="card-qty-btn" onclick="changeCardQty('c7', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Toscanello Aroma Moka x5', 11800, 'c7')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="toscanello aroma grappa x5"><div class="card-icon"><i class="fa-solid fa-smoking"></i></div><div><h3>Toscanello Aroma Grappa x5</h3><p class="price">$11.800</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('c8', -1)">-</button><span class="card-qty-num" id="qty-c8">1</span><button class="card-qty-btn" onclick="changeCardQty('c8', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Toscanello Aroma Grappa x5', 11800, 'c8')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-
-      <!-- ================= TABACOS PARA PIPA ================= -->
-      <div class="card" data-cat="cigarro" data-name="borkum riff cherry liqueur pipa cereza 50g"><div class="card-icon"><i class="fa-solid fa-pipe-smoking"></i></div><div><h3>Borkum Riff Cherry Liqueur 50g</h3><p class="price">$18.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('pi1', -1)">-</button><span class="card-qty-num" id="qty-pi1">1</span><button class="card-qty-btn" onclick="changeCardQty('pi1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Borkum Riff Cherry 50g', 18500, 'pi1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="borkum riff bourbon whiskey pipa 50g"><div class="card-icon"><i class="fa-solid fa-pipe-smoking"></i></div><div><h3>Borkum Riff Bourbon Whiskey 50g</h3><p class="price">$18.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('pi2', -1)">-</button><span class="card-qty-num" id="qty-pi2">1</span><button class="card-qty-btn" onclick="changeCardQty('pi2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Borkum Riff Bourbon 50g', 18500, 'pi2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="borkum riff vanilla honey pipa 50g"><div class="card-icon"><i class="fa-solid fa-pipe-smoking"></i></div><div><h3>Borkum Riff Vanilla & Honey 50g</h3><p class="price">$18.500</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('pi3', -1)">-</button><span class="card-qty-num" id="qty-pi3">1</span><button class="card-qty-btn" onclick="changeCardQty('pi3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Borkum Riff Vanilla 50g', 18500, 'pi3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="cigarro" data-name="captain black regular pipa 42.5g"><div class="card-icon"><i class="fa-solid fa-pipe-smoking"></i></div><div><h3>Captain Black Regular 42.5g</h3><p class="price">$19.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('pi4', -1)">-</button><span class="card-qty-num" id="qty-pi4">1</span><button class="card-qty-btn" onclick="changeCardQty('pi4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Captain Black Regular', 19000, 'pi4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-
-      <!-- ================= VAPERS / VAPEADORES ================= -->
-      <div class="card" data-cat="vaper" data-name="elfbar BC5000 watermelon ice sandia pod"><div class="card-icon"><i class="fa-solid fa-cloud"></i></div><div><h3>Elfbar BC5000 Watermelon Ice</h3><p class="price">$16.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('v1', -1)">-</button><span class="card-qty-num" id="qty-v1">1</span><button class="card-qty-btn" onclick="changeCardQty('v1', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Elfbar BC5000 Watermelon Ice', 16000, 'v1')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="vaper" data-name="elfbar BC5000 blue razz ice arandano pod"><div class="card-icon"><i class="fa-solid fa-cloud"></i></div><div><h3>Elfbar BC5000 Blue Razz Ice</h3><p class="price">$16.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('v2', -1)">-</button><span class="card-qty-num" id="qty-v2">1</span><button class="card-qty-btn" onclick="changeCardQty('v2', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Elfbar BC5000 Blue Razz Ice', 16000, 'v2')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="vaper" data-name="ignite V50 strawberry kiwi frutilla pod"><div class="card-icon"><i class="fa-solid fa-cloud"></i></div><div><h3>Ignite V50 Strawberry Kiwi</h3><p class="price">$18.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('v3', -1)">-</button><span class="card-qty-num" id="qty-v3">1</span><button class="card-qty-btn" onclick="changeCardQty('v3', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Ignite V50 Strawberry Kiwi', 18000, 'v3')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-      <div class="card" data-cat="vaper" data-name="ignite V50 menta mint pod"><div class="card-icon"><i class="fa-solid fa-cloud"></i></div><div><h3>Ignite V50 Icy Mint</h3><p class="price">$18.000</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('v4', -1)">-</button><span class="card-qty-num" id="qty-v4">1</span><button class="card-qty-btn" onclick="changeCardQty('v4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('Ignite V50 Icy Mint', 18000, 'v4')"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
-
-      <!-- ================= ENCENDEDORES Y ACCESORIOS ================= -->
-      <div class="card" data-cat="fuego" data-name="encendedor bic grande maxy x1"><div class="card-icon"><i class="fa-solid fa-fire
+      <div class="card" data-cat="papel" data-name="ocb virgen 1 1/4"><div class="card-icon"><i class="fa-regular fa-file"></i></div><div><h3>OCB Virgen 1 1/4</h3><p class="price">$900</p></div><div class="card-qty-selector"><button class="card-qty-btn" onclick="changeCardQty('p4', -1)">-</button><span class="card-qty-num" id="qty-p4">1</span><button class="card-qty-btn" onclick="changeCardQty('p4', 1)">+</button></div><button class="btn-add" onclick="addSelectedToCart('OCB Virgen 1 1
