@@ -81,7 +81,18 @@
       outline: none;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
-
+<!-- Categorías / Pestañas principales -->
+    <div class="category-bar">
+      <button class="cat-btn active" onclick="filterCategory('todos', this)">Todos</button>
+      <button class="cat-btn" onclick="filterCategory('tabaco', this)">🍃 Tabacos</button>
+      <button class="cat-btn" onclick="filterCategory('papel', this)">📜 Papeles</button>
+      <button class="cat-btn" onclick="filterCategory('filtro', this)">🚬 Filtros</button>
+      <button class="cat-btn" onclick="filterCategory('cigarro', this)">🍂 Cigarros / Pipa</button>
+      <button class="cat-btn" onclick="filterCategory('maquina', this)">⚙️ Armadoras</button>
+      <button class="cat-btn" onclick="filterCategory('fuego', this)">🔥 Encendedores</button>
+      <button class="cat-btn" onclick="filterCategory('vaper', this)">💨 Vapers</button>
+      <button class="cat-btn" onclick="filterCategory('accesorio', this)">🌿 Accesorios</button>
+    </div>
     /* Grid */
     .catalog {
       display: grid;
