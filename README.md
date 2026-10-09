@@ -3,17 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabacos Areco</title>
-  
-  <!-- Íconos de FontAwesome -->
+  <title>Tabacos Areco - Tienda</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-image: url('fondo.jpg'); 
@@ -22,97 +16,279 @@
       background-position: center;
       background-repeat: no-repeat;
       background-color: #1a1a1a;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      padding-bottom: 120px;
     }
 
-    .side-buttons {
-      position: fixed;
-      top: 50%;
-      left: 0;
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    header h1 { font-size: 2.2rem; color: #e0a96d; margin-bottom: 5px; }
+    header p { color: #ccc; font-size: 0.95rem; }
+
+    /* Buscador */
+    .search-container {
+      max-width: 500px;
+      margin: 20px auto 10px;
+      padding: 0 20px;
+    }
+
+    .search-box {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 40px;
-      transform: translateY(-50%);
-      z-index: 10;
-      pointer-events: none;
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: 1px solid #c28d4b;
+      background: rgba(20, 20, 20, 0.9);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
-    .btn-side {
-      pointer-events: auto;
+    /* Catálogo Grid */
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(20, 20, 20, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(224, 169, 109, 0.25);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .card h3 { font-size: 1.1rem; margin-bottom: 6px; color: #fff; }
+    .card .price { font-size: 1.25rem; font-weight: bold; color: #c28d4b; margin-bottom: 12px; }
+
+    .btn-add {
+      background-color: #c28d4b;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 16px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.05rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-      transition: all 0.3s ease;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .btn-pdf {
-      background-color: rgba(194, 141, 75, 0.95);
-      color: #ffffff;
-      border: 1px solid #e0a96d;
-    }
+    .btn-add:hover { background-color: #e0a96d; transform: scale(1.03); }
 
-    .btn-pdf:hover {
-      background-color: #c28d4b;
-      transform: scale(1.08) translateX(5px);
-    }
-
-    .btn-whatsapp {
-      background-color: rgba(37, 211, 102, 0.95);
-      color: #ffffff;
-      border: 1px solid #20ba5a;
-    }
-
-    .btn-whatsapp:hover {
+    /* Botón Flotante Carrito */
+    .cart-float-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
       background-color: #25d366;
-      transform: scale(1.08) translateX(-5px);
+      color: #fff;
+      border: none;
+      padding: 15px 22px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
     }
 
-    @media (max-width: 700px) {
-      body {
-        overflow-y: auto;
-      }
+    .cart-badge { background: #fff; color: #25d366; border-radius: 50%; padding: 2px 8px; font-size: 0.85rem; }
 
-      .side-buttons {
-        position: relative;
-        top: 0;
-        transform: none;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        margin-top: 65vh;
-        padding-bottom: 40px;
-      }
-
-      .btn-side {
-        width: 85%;
-        justify-content: center;
-      }
+    /* Modal Carrito */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(5px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
     }
+
+    .cart-content {
+      background: #1e1e1e;
+      border: 1px solid #c28d4b;
+      width: 90%; max-width: 450px;
+      border-radius: 18px;
+      padding: 22px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 12px; }
+    .close-btn { background: none; border: none; color: #aaa; font-size: 1.5rem; cursor: pointer; }
+    .cart-items { overflow-y: auto; flex-grow: 1; margin-bottom: 12px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #2a2a2a; }
+    .qty-btn { background: #333; color: #fff; border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+    .cart-total { font-size: 1.15rem; font-weight: bold; text-align: right; margin-bottom: 12px; color: #e0a96d; }
+    .btn-send-whatsapp { background-color: #25d366; color: #fff; border: none; padding: 14px; border-radius: 50px; font-size: 1rem; font-weight: bold; width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; }
   </style>
 </head>
 <body>
 
-  <div class="side-buttons">
-    <!-- Botón Lista en PDF -->
-    <a href="index.pdf" target="_blank" class="btn-side btn-pdf">
-      <i class="fa-solid fa-file-pdf fa-lg"></i> Lista de Precios
-    </a>
+  <header>
+    <h1>Tabacos Areco</h1>
+    <p>Seleccioná tus productos y enviá el pedido por WhatsApp</p>
+  </header>
 
-    <!-- Botón WhatsApp -->
-    <a href="https://wa.me/5492325404049" target="_blank" class="btn-side btn-whatsapp">
-      <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp
-    </a>
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar marca o sabor..." onkeyup="filterProducts()">
   </div>
 
+  <main class="catalog" id="productGrid">
+    <!-- PRODUCTOS DE TABACO PARA ARMAR DE TU PDF -->
+    
+    <!-- Luckies -->
+    <div class="card" data-name="luckies original 30gr"><div><h3>Luckies Original 30g</h3><p class="price">$7.500</p></div><button class="btn-add" onclick="addToCart('Luckies Original 30g', 7500)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="luckies galpao 30gr"><div><h3>Luckies Galpao 30g</h3><p class="price">$7.500</p></div><button class="btn-add" onclick="addToCart('Luckies Galpao 30g', 7500)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+
+    <!-- Cerrito -->
+    <div class="card" data-name="cerrito original 45gr"><div><h3>Cerrito Original 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Original 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito yellow vainilla 45gr"><div><h3>Cerrito Yellow (Vainilla) 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Yellow Vainilla 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito brown chocolate 45gr"><div><h3>Cerrito Brown (Chocolate) 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Brown Chocolate 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito expresso cafe moka 45gr"><div><h3>Cerrito Expresso (Café) 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Expresso Café 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito negro 45gr"><div><h3>Cerrito Negro 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Negro 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito uva 45gr"><div><h3>Cerrito Uva 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Uva 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito silver natural 45gr"><div><h3>Cerrito Silver (Natural) 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Silver Natural 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="cerrito virginia 45gr"><div><h3>Cerrito Virginia 45g</h3><p class="price">$6.300</p></div><button class="btn-add" onclick="addToCart('Cerrito Virginia 45g', 6300)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+
+    <!-- Golden Virginia -->
+    <div class="card" data-name="golden virginia 30gr"><div><h3>Golden Virginia 30g</h3><p class="price">$8.500</p></div><button class="btn-add" onclick="addToCart('Golden Virginia 30g', 8500)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="golden virginia suave 30gr"><div><h3>Golden Virginia Suave 30g</h3><p class="price">$8.500</p></div><button class="btn-add" onclick="addToCart('Golden Virginia Suave 30g', 8500)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+
+    <!-- Red Field -->
+    <div class="card" data-name="red field natural"><div><h3>Red Field Natural</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Red Field Natural', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="red field vainilla"><div><h3>Red Field Vainilla</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Red Field Vainilla', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="red field virginia"><div><h3>Red Field Virginia</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Red Field Virginia', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="red field chocolate"><div><h3>Red Field Chocolate</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Red Field Chocolate', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+
+    <!-- Stanley -->
+    <div class="card" data-name="stanley natural 01"><div><h3>Stanley Natural #01</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Stanley Natural #01', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="stanley vainilla 02"><div><h3>Stanley Vainilla #02</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Stanley Vainilla #02', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="stanley chocolate 03"><div><h3>Stanley Chocolate #3</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Stanley Chocolate #3', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+    <div class="card" data-name="stanley mint menta 04"><div><h3>Stanley Mint #04</h3><p class="price">$6.900</p></div><button class="btn-add" onclick="addToCart('Stanley Mint #04', 6900)"><i class="fa-solid fa-cart-plus"></i> Agregar</button></div>
+  </main>
+
+  <button class="cart-float-btn" onclick="toggleCart()">
+    <i class="fa-solid fa-cart-shopping"></i> Ver Pedido
+    <span class="cart-badge" id="cart-count">0</span>
+  </button>
+
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Tu Pedido</h2>
+        <button class="close-btn" onclick="toggleCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>
+      </div>
+      <div class="cart-total" id="cart-total">Total: $0</div>
+      <button class="btn-send-whatsapp" onclick="sendToWhatsApp()">
+        <i class="fa-brands fa-whatsapp fa-lg"></i> Enviar por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    const phoneNumber = "5492325404049";
+
+    function filterProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        card.style.display = name.includes(input) ? 'flex' : 'none';
+      });
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) { existing.qty++; } 
+      else { cart.push({ name, price, qty: 1 }); }
+      updateCartUI();
+    }
+
+    function updateQty(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const container = document.getElementById('cart-items');
+      const count = document.getElementById('cart-count');
+      const total = document.getElementById('cart-total');
+      let totalQty = 0, totalPrice = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>';
+      } else {
+        container.innerHTML = '';
+        cart.forEach(item => {
+          totalQty += item.qty;
+          totalPrice += item.price * item.qty;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <div><strong>${item.name}</strong><br><small>$${item.price.toLocaleString()}</small></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button class="qty-btn" onclick="updateQty('${item.name}', -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }
+      count.innerText = totalQty;
+      total.innerText = `Total: $${totalPrice.toLocaleString()}`;
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function sendToWhatsApp() {
+      if (cart.length === 0) return alert("El carrito está vacío");
+      let text = "¡Hola! Quisiera hacer el siguiente pedido:\n\n";
+      let total = 0;
+      cart.forEach(item => {
+        const sub = item.price * item.qty;
+        total += sub;
+        text += `• ${item.name} x${item.qty} = $${sub.toLocaleString()}\n`;
+      });
+      text += `\n*Total: $${total.toLocaleString()}*`;
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
 </body>
 </html>
