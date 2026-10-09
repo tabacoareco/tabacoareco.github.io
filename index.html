@@ -1,371 +1,605 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabacos Areco</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #27ae60;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabacos Areco - Tienda</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    body {
+      background-image: url('fondo.jpg'); 
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #1a1a1a;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      padding-bottom: 120px;
+    }
 
-        .logo-container {
-            max-width: 250px;
-            margin: 0 auto 15px auto;
-        }
+    /* Espacio inicial para lucir el logo de fondo */
+    .hero-space {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 20px;
+      text-align: center;
+    }
 
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    .scroll-hint {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(224, 169, 109, 0.4);
+      color: #e0a96d;
+      font-size: 0.95rem;
+      font-weight: bold;
+      animation: bounce 2s infinite;
+    }
 
-        header h1 {
-            margin: 0 0 5px 0;
-            font-size: 1.8rem;
-        }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
 
-        header p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
+    /* Tienda y Filtros de Categoría */
+    .store-container {
+      background: linear-gradient(180deg, rgba(15,15,15,0.7) 0%, rgba(15,15,15,0.95) 15%, #0f0f0f 100%);
+      padding-top: 30px;
+      min-height: 100vh;
+      border-top: 1px solid rgba(224, 169, 109, 0.3);
+    }
 
-        main {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
+    header { text-align: center; padding: 10px 20px; }
+    header h1 { font-size: 2.2rem; color: #e0a96d; margin-bottom: 5px; }
+    header p { color: #ccc; font-size: 0.95rem; }
 
-        .category-section {
-            margin-bottom: 30px;
-        }
+    /* Buscador */
+    .search-container {
+      max-width: 500px;
+      margin: 15px auto 10px;
+      padding: 0 20px;
+    }
 
-        .category-title {
-            background-color: #34495e;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
+    .search-box {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: 1px solid #c28d4b;
+      background: rgba(20, 20, 20, 0.9);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-        }
+    /* Botones de Categorías */
+    .category-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 15px auto 25px;
+      padding: 0 20px;
+      max-width: 800px;
+    }
 
-        .product-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s;
-        }
+    .cat-btn {
+      background: rgba(30,30,30,0.8);
+      color: #ccc;
+      border: 1px solid rgba(224, 169, 109, 0.3);
+      padding: 8px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
 
-        .product-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+    .cat-btn.active, .cat-btn:hover {
+      background: #c28d4b;
+      color: #fff;
+      border-color: #e0a96d;
+    }
 
-        .product-card h3 {
-            font-size: 1rem;
-            margin: 0 0 10px 0;
-            color: #2c3e50;
-        }
+    /* Grid de Productos */
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
 
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
+    .card {
+      background: rgba(25, 25, 25, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(224, 169, 109, 0.25);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    }
 
-        .price {
-            font-weight: bold;
-            color: #e74c3c;
-            font-size: 1.05rem;
-        }
+    .card-icon {
+      font-size: 1.8rem;
+      color: #e0a96d;
+      margin-bottom: 8px;
+    }
 
-        .btn-add {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
+    .card h3 { font-size: 1.05rem; margin-bottom: 6px; color: #fff; }
+    .card .price { font-size: 1.2rem; font-weight: bold; color: #c28d4b; margin-bottom: 12px; }
 
-        .btn-add:hover {
-            background-color: #219653;
-        }
+    .card-qty-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      background: rgba(0,0,0,0.4);
+      padding: 6px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
 
-        /* Estilo del Carrito flotante / fijo */
-        .cart-container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+    .card-qty-btn {
+      background: #c28d4b;
+      color: #fff;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
 
-        .cart-container h2 {
-            margin-top: 0;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
+    .card-qty-btn:hover { background: #e0a96d; }
+    .card-qty-num { font-weight: bold; font-size: 1.05rem; min-width: 20px; }
 
-        .cart-items {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 15px 0;
-        }
+    .btn-add {
+      background-color: #25d366;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
-        .cart-items li {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f1f1f1;
-        }
+    .btn-add:hover { background-color: #20ba5a; transform: scale(1.03); }
 
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: right;
-            margin-bottom: 15px;
-        }
+    /* Botón Flotante Carrito */
+    .cart-float-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #c28d4b;
+      color: #fff;
+      border: 1px solid #e0a96d;
+      padding: 15px 22px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+    }
 
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25d366;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-sizing: border-box;
-        }
+    .cart-badge { background: #fff; color: #1a1a1a; border-radius: 50%; padding: 2px 8px; font-size: 0.85rem; font-weight: bold; }
 
-        .btn-whatsapp:hover {
-            background-color: #1ebd5a;
-        }
-    </style>
+    /* Modal Carrito */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cart-content {
+      background: #1e1e1e;
+      border: 1px solid #c28d4b;
+      width: 90%; max-width: 450px;
+      border-radius: 18px;
+      padding: 22px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 12px; }
+    .close-btn { background: none; border: none; color: #aaa; font-size: 1.5rem; cursor: pointer; }
+    .cart-items { overflow-y: auto; flex-grow: 1; margin-bottom: 12px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #2a2a2a; }
+    .qty-btn { background: #333; color: #fff; border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+    .cart-total { font-size: 1.15rem; font-weight: bold; text-align: right; margin-bottom: 12px; color: #e0a96d; }
+    .btn-send-whatsapp { background-color: #25d366; color: #fff; border: none; padding: 14px; border-radius: 50px; font-size: 1rem; font-weight: bold; width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; }
+  </style>
 </head>
 <body>
 
+  <div class="hero-space">
+    <div class="scroll-hint">
+      <i class="fa-solid fa-chevron-down"></i> Deslizá hacia abajo para ver el catálogo
+    </div>
+  </div>
+
+  <div class="store-container">
     <header>
-        <!-- Logo completo de la empresa -->
-        <div class="logo-container">
-            <!-- Reemplaza 'logo.png' por la ruta o URL real de tu logo -->
-            <img src="logo.png" alt="Tabacos Areco Logo" onerror="this.style.display='none'">
-        </div>
-        <h1>Tabacos Areco</h1>
-        <p>Seleccioná tus productos y enviá el pedido por WhatsApp</p>
+      <h1>Tabacos Areco</h1>
+      <p>Seleccioná tus productos y enviá el pedido por WhatsApp</p>
     </header>
 
-    <main>
-        <!-- Categoría: TABACO PARA ARMAR -->
-        <section class="category-section">
-            <h2 class="category-title">Tabaco para Armar</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Luckies Original 30g</h3>
-                    <div class="product-footer">
-                        <span class="price">$7.500</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Luckies Original 30g', 7500)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Luckies Galpao 30g</h3>
-                    <div class="product-footer">
-                        <span class="price">$7.500</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Luckies Galpao 30g', 7500)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Cerrito Original 45g</h3>
-                    <div class="product-footer">
-                        <span class="price">$6.300</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Cerrito Original 45g', 6300)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Cerrito Yellow (Vainilla) 45g</h3>
-                    <div class="product-footer">
-                        <span class="price">$6.300</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Cerrito Yellow 45g', 6300)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Golden Virginia 30g</h3>
-                    <div class="product-footer">
-                        <span class="price">$8.500</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Golden Virginia 30g', 8500)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Stanley Natural #01</h3>
-                    <div class="product-footer">
-                        <span class="price">$6.900</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Stanley Natural #01', 6900)">Agregar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Categoría: PAPELES -->
-        <section class="category-section">
-            <h2 class="category-title">Papeles</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>OCB Premium (Negro) 1 1/4</h3>
-                    <div class="product-footer">
-                        <span class="price">$900</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('OCB Premium 1 1/4', 900)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Smoking Deluxe 1 1/4</h3>
-                    <div class="product-footer">
-                        <span class="price">$1.000</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Smoking Deluxe 1 1/4', 1000)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>RAW Clásico 1 1/4</h3>
-                    <div class="product-footer">
-                        <span class="price">$1.200</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('RAW Clasico 1 1/4', 1200)">Agregar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Categoría: VAPERS DESCARTABLES -->
-        <section class="category-section">
-            <h2 class="category-title">Vapers Descartables</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Elfbar 30k (Variados sabores)</h3>
-                    <div class="product-footer">
-                        <span class="price">$30.000</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Elfbar 30k', 30000)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Elfbar 40k (Variados sabores)</h3>
-                    <div class="product-footer">
-                        <span class="price">$33.000</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Elfbar 40k', 33000)">Agregar</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <h3>Ignite 15K</h3>
-                    <div class="product-footer">
-                        <span class="price">$25.000</span>
-                        <button class="btn-add" onclick="agregarAlCarrito('Ignite 15K', 25000)">Agregar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Carrito de Compras -->
-    <div class="cart-container">
-        <h2>Tu Pedido</h2>
-        <ul id="cart-items" class="cart-items">
-            <li>El carrito está vacío</li>
-        </ul>
-        <div class="cart-total" id="cart-total">Total: $0</div>
-        <a href="#" id="whatsapp-btn" class="btn-whatsapp" onclick="enviarWhatsApp(event)">Enviar Pedido por WhatsApp</a>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar producto, marca o sabor..." onkeyup="filterProducts()">
     </div>
 
-    <script>
-        let carrito = [];
+    <!-- Filtros Rápidos de Categoría -->
+    <div class="category-bar">
+      <button class="cat-btn active" onclick="filterCategory('todos', this)">Todos</button>
+      <button class="cat-btn" onclick="filterCategory('tabaco', this)">🍃 Tabacos</button>
+      <button class="cat-btn" onclick="filterCategory('papel', this)">📜 Papeles</button>
+      <button class="cat-btn" onclick="filterCategory('filtro', this)">🚬 Filtros</button>
+      <button class="cat-btn" onclick="filterCategory('maquina', this)">⚙️ Armadoras</button>
+    </div>
 
-        function agregarAlCarrito(nombre, precio) {
-            let itemExistente = carrito.find(item => item.nombre === nombre);
-            if (itemExistente) {
-                itemExistente.cantidad++;
-            } else {
-                carrito.push({ nombre, precio, cantidad: 1 });
-            }
-            actualizarCarrito();
+    <main class="catalog" id="productGrid">
+
+      <!-- ================= MÓDULO 1: TABACOS PARA ARMAR ================= -->
+      <div class="card" data-cat="tabaco" data-name="luckies original 30gr">
+        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div><h3>Luckies Original 30g</h3><p class="price">$7.500</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('luck-orig', -1)">-</button>
+          <span class="card-qty-num" id="qty-luck-orig">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('luck-orig', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Luckies Original 30g', 7500, 'luck-orig')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="tabaco" data-name="cerrito original 45gr">
+        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div><h3>Cerrito Original 45g</h3><p class="price">$6.300</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('cerr-orig', -1)">-</button>
+          <span class="card-qty-num" id="qty-cerr-orig">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('cerr-orig', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Cerrito Original 45g', 6300, 'cerr-orig')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="tabaco" data-name="golden virginia 30gr">
+        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div><h3>Golden Virginia 30g</h3><p class="price">$8.500</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('gold-virg', -1)">-</button>
+          <span class="card-qty-num" id="qty-gold-virg">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('gold-virg', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Golden Virginia 30g', 8500, 'gold-virg')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+
+      <!-- ================= MÓDULO 2: PAPELES ================= -->
+      <div class="card" data-cat="papel" data-name="ocb premium negro 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>OCB Premium (Negro) 1 1/4</h3><p class="price">$900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-prem-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-prem-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-prem-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('OCB Premium Negro 1 1/4', 900, 'ocb-prem-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="ocb x-pert gris 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>OCB X-pert (Gris) 1 1/4</h3><p class="price">$900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-xpert-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-xpert-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-xpert-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('OCB X-pert Gris 1 1/4', 900, 'ocb-xpert-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="ocb cañamo organic 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>OCB Cáñamo Organic 1 1/4</h3><p class="price">$900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-can-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-can-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-can-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('OCB Cáñamo 1 1/4', 900, 'ocb-can-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="ocb virgen 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>OCB Virgen 1 1/4</h3><p class="price">$900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-virg-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-virg-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-virg-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('OCB Virgen 1 1/4', 900, 'ocb-virg-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="smoking deluxe 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>Smoking Deluxe 1 1/4</h3><p class="price">$1.000</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('smok-delux-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-smok-delux-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('smok-delux-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Smoking Deluxe 1 1/4', 1000, 'smok-delux-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="smoking brown 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>Smoking Brown 1 1/4</h3><p class="price">$1.000</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('smok-brown-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-smok-brown-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('smok-brown-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Smoking Brown 1 1/4', 1000, 'smok-brown-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="papel" data-name="raw clasico 1 1/4">
+        <div class="card-icon"><i class="fa-regular fa-file"></i></div>
+        <div><h3>RAW Clásico 1 1/4</h3><p class="price">$1.200</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('raw-clas-114', -1)">-</button>
+          <span class="card-qty-num" id="qty-raw-clas-114">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('raw-clas-114', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('RAW Clásico 1 1/4', 1200, 'raw-clas-114')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+
+      <!-- ================= MÓDULO 2: FILTROS ================= -->
+      <div class="card" data-cat="filtro" data-name="ocb filtros regular 100">
+        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
+        <div><h3>Filtros OCB Regular x100</h3><p class="price">$1.450</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-reg', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-filt-reg">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-reg', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Regular x100', 1450, 'ocb-filt-reg')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="filtro" data-name="ocb filtros slim 150">
+        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
+        <div><h3>Filtros OCB Slim x150</h3><p class="price">$2.000</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-slim', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-filt-slim">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-slim', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Slim x150', 2000, 'ocb-filt-slim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="filtro" data-name="ocb filtros extra slim 120">
+        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
+        <div><h3>Filtros OCB Extra Slim x120</h3><p class="price">$2.250</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-eslim', -1)">-</button>
+          <span class="card-qty-num" id="qty-ocb-filt-eslim">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('ocb-filt-eslim', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Filtros OCB Extra Slim x120', 2250, 'ocb-filt-eslim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="filtro" data-name="libella filtros slim 200">
+        <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
+        <div><h3>Filtros Libella Slim x200</h3><p class="price">$2.250</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('lib-filt-slim', -1)">-</button>
+          <span class="card-qty-num" id="qty-lib-filt-slim">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('lib-filt-slim', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Filtros Libella Slim x200', 2250, 'lib-filt-slim')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+
+      <!-- ================= MÓDULO 2: ARMADORAS ================= -->
+      <div class="card" data-cat="maquina" data-name="maquina ocb plastica 1 1/4">
+        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+        <div><h3>Armadora OCB Plástica 1 1/4</h3><p class="price">$6.900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-plas', -1)">-</button>
+          <span class="card-qty-num" id="qty-maq-ocb-plas">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-plas', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Armadora OCB Plástica 1 1/4', 6900, 'maq-ocb-plas')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="maquina" data-name="maquina ocb metalica 1 1/4">
+        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+        <div><h3>Armadora OCB Metálica 1 1/4</h3><p class="price">$7.700</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-met', -1)">-</button>
+          <span class="card-qty-num" id="qty-maq-ocb-met">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('maq-ocb-met', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Armadora OCB Metálica 1 1/4', 7700, 'maq-ocb-met')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+      <div class="card" data-cat="maquina" data-name="maquina smoking plastica 78mm">
+        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+        <div><h3>Armadora Smoking Plástica 78mm</h3><p class="price">$6.900</p></div>
+        <div class="card-qty-selector">
+          <button class="card-qty-btn" onclick="changeCardQty('maq-smok-78', -1)">-</button>
+          <span class="card-qty-num" id="qty-maq-smok-78">1</span>
+          <button class="card-qty-btn" onclick="changeCardQty('maq-smok-78', 1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addSelectedToCart('Armadora Smoking Plástica 78mm', 6900, 'maq-smok-78')"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Botón Flotante Carrito -->
+  <button class="cart-float-btn" onclick="toggleCart()">
+    <i class="fa-solid fa-cart-shopping"></i> Ver Pedido
+    <span class="cart-badge" id="cart-count">0</span>
+  </button>
+
+  <!-- Modal Carrito -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Tu Pedido</h2>
+        <button class="close-btn" onclick="toggleCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>
+      </div>
+      <div class="cart-total" id="cart-total">Total: $0</div>
+      <button class="btn-send-whatsapp" onclick="sendToWhatsApp()">
+        <i class="fa-brands fa-whatsapp fa-lg"></i> Enviar por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let currentCategory = 'todos';
+    const phoneNumber = "5492325404049";
+
+    function changeCardQty(id, delta) {
+      const qtyElem = document.getElementById(`qty-${id}`);
+      let currentQty = parseInt(qtyElem.innerText);
+      currentQty += delta;
+      if (currentQty < 1) currentQty = 1;
+      qtyElem.innerText = currentQty;
+    }
+
+    function addSelectedToCart(name, price, id) {
+      const qtyElem = document.getElementById(`qty-${id}`);
+      const quantityToAdd = parseInt(qtyElem.innerText);
+
+      const existing = cart.find(item => item.name === name);
+      if (existing) { 
+        existing.qty += quantityToAdd; 
+      } else { 
+        cart.push({ name, price, qty: quantityToAdd }); 
+      }
+      
+      qtyElem.innerText = 1;
+      updateCartUI();
+    }
+
+    function filterCategory(cat, btnElem) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      btnElem.classList.add('active');
+      filterProducts();
+    }
+
+    function filterProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        const cat = card.getAttribute('data-cat');
+
+        const matchesSearch = name.includes(input);
+        const matchesCategory = (currentCategory === 'todos' || cat === currentCategory);
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
+      });
+    }
 
-        function actualizarCarrito() {
-            const lista = document.getElementById('cart-items');
-            const totalDiv = document.getElementById('cart-total');
-            lista.innerHTML = '';
+    function updateQty(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+      }
+      updateCartUI();
+    }
 
-            if (carrito.length === 0) {
-                lista.innerHTML = '<li>El carrito está vacío</li>';
-                totalDiv.textContent = 'Total: $0';
-                return;
-            }
+    function updateCartUI() {
+      const container = document.getElementById('cart-items');
+      const count = document.getElementById('cart-count');
+      const total = document.getElementById('cart-total');
+      let totalQty = 0, totalPrice = 0;
 
-            let total = 0;
-            carrito.forEach((item, index) => {
-                total += item.precio * item.cantidad;
-                let li = document.createElement('li');
-                li.innerHTML = `
-                    <span>${item.nombre} (x${item.cantidad})</span>
-                    <span>$${(item.precio * item.cantidad).toLocaleString()}</span>
-                `;
-                lista.appendChild(li);
-            });
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">El carrito está vacío</p>';
+      } else {
+        container.innerHTML = '';
+        cart.forEach(item => {
+          totalQty += item.qty;
+          totalPrice += item.price * item.qty;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <div><strong>${item.name}</strong><br><small>$${item.price.toLocaleString()}</small></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button class="qty-btn" onclick="updateQty('${item.name}', -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }
+      count.innerText = totalQty;
+      total.innerText = `Total: $${totalPrice.toLocaleString()}`;
+    }
 
-            totalDiv.textContent = `Total: $${total.toLocaleString()}`;
-        }
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+    }
 
-        function enviarWhatsApp(e) {
-            e.preventDefault();
-            if (carrito.length === 0) {
-                alert('El carrito está vacío.');
-                return;
-            }
-
-            let mensaje = 'Hola! Quiero hacer el siguiente pedido:\n\n';
-            let total = 0;
-            carrito.forEach(item => {
-                mensaje += `- ${item.nombre} (x${item.cantidad}): $${(item.precio * item.cantidad).toLocaleString()}\n`;
-                total += item.precio * item.cantidad;
-            });
-            mensaje += `\nTotal: $${total.toLocaleString()}`;
-
-            // Reemplaza con tu número de WhatsApp con característica internacional (ej: 549...)
-            let numeroWhatsApp = '549XXXXXXXXXX'; 
-            let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+    function sendToWhatsApp() {
+      if (cart.length === 0) return alert("El carrito está vacío");
+      let text = "¡Hola! Quisiera hacer el siguiente pedido en Tabacos Areco:\n\n";
+      let total = 0;
+      cart.forEach(item => {
+        const sub = item.price * item.qty;
+        total += sub;
+        text += `• ${item.name} x${item.qty} = $${sub.toLocaleString()}\n`;
+      });
+      text += `\n*Total: $${total.toLocaleString()}*`;
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
 </body>
 </html>
